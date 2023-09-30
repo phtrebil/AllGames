@@ -8,6 +8,8 @@ import java.util.*
 
 fun main() {
 
+    var meuJogo = Jogo("",  "", "")
+
     val read = Scanner(System.`in`)
     println("Digite o código do jogo!")
     val busca = read.nextLine()
@@ -24,13 +26,46 @@ fun main() {
     val json = response.body()
     val gson = Gson()
 
-    try {
+//    try {
+//        val myGame = gson.fromJson(json, InfoGame::class.java)
+//        val meuJogo = Jogo(myGame.info.title, myGame.info.thumb, "")
+//        println(meuJogo)
+//    } catch (e: JsonSyntaxException){
+//        println("Jogo não localizado")
+//    }
+
+    val result = runCatching {
         val myGame = gson.fromJson(json, InfoGame::class.java)
-        val meuJogo = Jogo(myGame.info.title, myGame.info.thumb, "")
+        meuJogo.nome = myGame.info.title
+        meuJogo.capa = myGame.info.thumb
         println(meuJogo)
-    } catch (e: JsonSyntaxException){
+    }
+
+    result.onFailure {
         println("Jogo não localizado")
     }
 
+    // código omitido
+
+    result.onSuccess {
+        println("Deseja inserir uma descrição personalizada? S/N")
+
+        val opcao = read.nextLine()
+
+        if (opcao.equals("s", true)) {
+
+            println("Insira a descrição personalizada para o jogo:")
+            val descricaoPersonalizada = read.nextLine();
+            meuJogo.descricao = descricaoPersonalizada
+        } else {
+            meuJogo.descricao = meuJogo.nome
+        }
+
+        println(meuJogo)
+
+    }
 
 }
+
+
+

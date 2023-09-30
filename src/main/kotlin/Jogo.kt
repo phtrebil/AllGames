@@ -1,7 +1,7 @@
 class Jogo(
-    val nome:String,
-    val capa: String,
-    val descricao: String
+    var nome:String,
+    var capa: String,
+    var descricao: String
 ) {
     override fun toString(): String {
         return "Nome: $nome\n" +
