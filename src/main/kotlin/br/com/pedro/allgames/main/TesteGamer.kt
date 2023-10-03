@@ -12,7 +12,6 @@ fun main(){
     gamer1.let {
         it.dataNascimento = "12/12/1990"
         it.usuario = "phtrebil"
-        it.idInterno= "phtrebil"
     }
 
     println(gamer1)
