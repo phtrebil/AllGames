@@ -53,8 +53,42 @@ fun main() {
         val resposta = leitura.nextLine()
     } while (resposta.equals("s", ignoreCase = true))
 
+
+
     println(gamer)
+
+    gamer.jogosBuscados.sortBy {
+        it?.nome
+    }
+
+    gamer.jogosBuscados.forEach {jogo ->
+
+        println("Título: ${jogo?.nome}")
+    }
+
+    println("Deseja filtrar algum jogo na lista? S/N")
+    if (leitura.nextLine().equals("s", ignoreCase = true)){
+        println("Digite o nome do jogo que deseja filtrar")
+        val jogosFiltrados = gamer.jogosBuscados.filter {jogo ->
+            jogo?.nome?.contains(leitura.nextLine(), ignoreCase = true)?: false
+
+        }
+
+        println(jogosFiltrados)
+    }
+
+    println("Deseja excluir algum jogo da lista original? S/N")
+    val opcao = leitura.nextLine()
+    if (opcao.equals("s", true)) {
+        println("\n Informe a posição do jogo que deseja excluir: ")
+        val posicao = leitura.nextInt()
+        gamer.jogosBuscados.removeAt(posicao)
+    }
+
+    println("\n Lista atualizada:")
     println(gamer.jogosBuscados)
+
+
     println("Busca finalizada!")
 
 }
