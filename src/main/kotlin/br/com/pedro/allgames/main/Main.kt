@@ -1,18 +1,20 @@
 package br.com.pedro.allgames.main
 
+import br.com.pedro.allgames.model.Gamer
 import br.com.pedro.allgames.model.Jogo
 import br.com.pedro.allgames.services.ConsumeApi
 import java.util.*
 
 fun main() {
+    val leitura = Scanner(System.`in`)
+    val gamer = Gamer.criarGamer(leitura)
+    do {
 
-    do{
-        val leitura = Scanner(System.`in`)
+
         println("Digite um código de jogo para buscar:")
         val busca = leitura.nextLine()
 
         val buscaApi = ConsumeApi()
-
 
 
         var meuJogo: Jogo? = null
@@ -39,6 +41,8 @@ fun main() {
             } else {
                 meuJogo?.descricao = meuJogo?.nome
 
+                gamer.jogosBuscados.add(meuJogo)
+
             }
 
             println(meuJogo)
@@ -47,8 +51,10 @@ fun main() {
         println("Deseja buscar um novo jogo? S/N")
 
         val resposta = leitura.nextLine()
-    }while (resposta.equals("s", ignoreCase = true))
+    } while (resposta.equals("s", ignoreCase = true))
 
+    println(gamer)
+    println(gamer.jogosBuscados)
     println("Busca finalizada!")
 
 }

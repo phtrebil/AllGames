@@ -1,5 +1,6 @@
 package br.com.pedro.allgames.model
 
+import java.util.*
 import kotlin.random.Random
 
 data class Gamer(
@@ -16,7 +17,7 @@ data class Gamer(
         }
     var idInterno: String? = null
         private set
-    val jogosBuscados = mutableListOf<Jogo>()
+    val jogosBuscados = mutableListOf<Jogo?>()
 
     constructor(nome: String, email: String, dataNascimento: String, usuario: String) : this(nome, email) {
 
@@ -27,7 +28,7 @@ data class Gamer(
 
     init {
         email = validaEmail()
-        if(nome.isNullOrBlank()){
+        if (nome.isNullOrBlank()) {
             throw IllegalArgumentException("Nome está em branco")
         }
     }
@@ -51,6 +52,31 @@ data class Gamer(
             throw IllegalArgumentException("Email inválido")
         }
 
+    }
+
+    companion object {
+        fun criarGamer(leitura: Scanner): Gamer {
+            println("Bem vindo à AllGames! Vamos fazer o seu cadastro. Digite o seu nome:")
+            val nome = leitura.nextLine()
+            println("Agora digite o seu e-mail:")
+            val email = leitura.nextLine()
+            println("Deseja realizar o cadastro completo? S/N")
+            val opcao = leitura.nextLine()
+
+            if (opcao.equals("S", ignoreCase = true)) {
+                println("Digite a sua data de nascimeto")
+                val dataNascimento = leitura.nextLine()
+                println("Digite um usuário")
+                val usuario = leitura.nextLine()
+
+                return Gamer(nome, email, dataNascimento, usuario)
+            } else {
+
+                return Gamer(nome, email)
+
+            }
+
+        }
     }
 
 
