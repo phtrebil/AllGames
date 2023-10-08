@@ -70,7 +70,7 @@ fun main() {
     if (leitura.nextLine().equals("s", ignoreCase = true)){
         println("Digite o nome do jogo que deseja filtrar")
         val jogosFiltrados = gamer.jogosBuscados.filter {jogo ->
-            jogo?.nome?.contains(leitura.nextLine(), ignoreCase = true)?: false
+            jogo?.nome?.contains("batman", ignoreCase = true)?: false
 
         }
 
