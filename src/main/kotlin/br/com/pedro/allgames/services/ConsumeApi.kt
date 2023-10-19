@@ -1,5 +1,7 @@
 package br.com.pedro.allgames.services
 
+import br.com.pedro.allgames.extensions.criaGamer
+import br.com.pedro.allgames.model.Gamer
 import br.com.pedro.allgames.model.InfoGame
 import br.com.pedro.allgames.model.InfoGamerJson
 import com.google.gson.Gson
@@ -32,7 +34,7 @@ class ConsumeApi {
 
     }
 
-    fun buscaGamers(): List<InfoGamerJson> {
+    fun buscaGamers(): List<Gamer> {
         val endereco = "https://raw.githubusercontent.com/jeniblodev/arquivosJson/main/gamers.json"
 
         val client: HttpClient = HttpClient.newHttpClient()
@@ -48,7 +50,11 @@ class ConsumeApi {
         val meuGameTipo = object : TypeToken<List<InfoGamerJson>>(){}
         val listaGamer = gson.fromJson(json, meuGameTipo)
 
-        return listaGamer
+        val listaConvertida = listaGamer.map {
+            it.criaGamer()
+        }
+
+        return listaConvertida
     }
 
 
