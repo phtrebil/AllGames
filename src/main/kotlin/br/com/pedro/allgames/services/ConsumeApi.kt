@@ -14,40 +14,21 @@ import java.net.http.HttpResponse
 class ConsumeApi {
 
     fun findGame(id: String): InfoGame {
-        val client: HttpClient = HttpClient.newHttpClient()
 
-        val request = HttpRequest.newBuilder()
-            .uri(URI.create("https://www.cheapshark.com/api/1.0/games?id=$id"))
-            .build()
-
-        val response = client
-            .send(request, HttpResponse.BodyHandlers.ofString())
-
-        val json = response.body()
+        val json = consumeApi("https://www.cheapshark.com/api/1.0/games?id=$id")
         val gson = Gson()
         val myGame = gson.fromJson(json, InfoGame::class.java)
 
-
-
         return myGame
-
-
     }
 
     fun buscaGamers(): List<Gamer> {
         val endereco = "https://raw.githubusercontent.com/jeniblodev/arquivosJson/main/gamers.json"
 
-        val client: HttpClient = HttpClient.newHttpClient()
-        val request = HttpRequest.newBuilder()
-            .uri(URI.create(endereco))
-            .build()
-        val response = client
-            .send(request, HttpResponse.BodyHandlers.ofString())
+        val json = consumeApi(endereco)
 
-        val json = response.body()
-
-        val gson = Gson()
         val meuGameTipo = object : TypeToken<List<InfoGamerJson>>(){}
+        val gson = Gson()
         val listaGamer = gson.fromJson(json, meuGameTipo)
 
         val listaConvertida = listaGamer.map {
@@ -57,6 +38,16 @@ class ConsumeApi {
         return listaConvertida
     }
 
+   private fun consumeApi(endereco: String): String{
+        val client: HttpClient = HttpClient.newHttpClient()
+        val request = HttpRequest.newBuilder()
+            .uri(URI.create(endereco))
+            .build()
+        val response = client
+            .send(request, HttpResponse.BodyHandlers.ofString())
 
+        return response.body()
+
+    }
 
 }
