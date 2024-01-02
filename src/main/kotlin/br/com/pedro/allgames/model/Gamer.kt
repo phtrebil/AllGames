@@ -40,6 +40,10 @@ data class Gamer(
         idInterno = "$usuario#$tag"
     }
 
+    fun alugaGame(jogo: InfoGame): Aluguel{
+       return Aluguel(this, jogo)
+    }
+
     override fun toString(): String {
         return "Gamer(nome='$nome', email='$email', dataNascimento=$dataNascimento, usuario=$usuario, idInterno=$idInterno)"
     }
