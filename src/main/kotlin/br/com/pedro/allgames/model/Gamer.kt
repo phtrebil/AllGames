@@ -1,5 +1,6 @@
 package br.com.pedro.allgames.model
 
+import java.time.LocalDate
 import java.util.*
 import kotlin.random.Random
 
@@ -40,8 +41,8 @@ data class Gamer(
         idInterno = "$usuario#$tag"
     }
 
-    fun alugaGame(jogo: InfoGame): Aluguel{
-       return Aluguel(this, jogo)
+    fun alugaGame(jogo: Jogo, dataInicial: LocalDate, dataFinal:LocalDate): Aluguel{
+       return Aluguel(this, jogo, dataInicial, dataFinal)
     }
 
     override fun toString(): String {
