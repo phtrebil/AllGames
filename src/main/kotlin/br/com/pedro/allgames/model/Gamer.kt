@@ -41,8 +41,8 @@ data class Gamer(
         idInterno = "$usuario#$tag"
     }
 
-    fun alugaGame(jogo: Jogo, dataInicial: LocalDate, dataFinal:LocalDate): Aluguel{
-       return Aluguel(this, jogo, dataInicial, dataFinal)
+    fun alugaGame(jogo: Jogo, periodo: Periodo): Aluguel{
+       return Aluguel(this, jogo, periodo)
     }
 
     override fun toString(): String {

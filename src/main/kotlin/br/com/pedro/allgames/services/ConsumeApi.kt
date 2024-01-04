@@ -38,6 +38,7 @@ class ConsumeApi {
         return listaConvertida
     }
 
+
    private fun consumeApi(endereco: String): String{
         val client: HttpClient = HttpClient.newHttpClient()
         val request = HttpRequest.newBuilder()
