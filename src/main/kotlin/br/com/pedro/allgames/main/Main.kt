@@ -39,7 +39,7 @@ fun main() {
                 val descricaoPersonalizada = leitura.nextLine()
                 meuJogo?.descricao = descricaoPersonalizada
             } else {
-                meuJogo?.descricao = meuJogo?.nome
+                meuJogo?.descricao = meuJogo?.titulo
 
                 gamer.jogosBuscados.add(meuJogo)
 
@@ -58,19 +58,19 @@ fun main() {
     println(gamer)
 
     gamer.jogosBuscados.sortBy {
-        it?.nome
+        it?.titulo
     }
 
     gamer.jogosBuscados.forEach {jogo ->
 
-        println("Título: ${jogo?.nome}")
+        println("Título: ${jogo?.titulo}")
     }
 
     println("Deseja filtrar algum jogo na lista? S/N")
     if (leitura.nextLine().equals("s", ignoreCase = true)){
         println("Digite o nome do jogo que deseja filtrar")
         val jogosFiltrados = gamer.jogosBuscados.filter {jogo ->
-            jogo?.nome?.contains("batman", ignoreCase = true)?: false
+            jogo?.titulo?.contains("batman", ignoreCase = true)?: false
 
         }
 

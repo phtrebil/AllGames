@@ -15,7 +15,7 @@ fun main() {
 
     val gamer = consumo.buscaGamers().get(2)
     val periodo = Periodo(LocalDate.now(), LocalDate.now().plusDays(3))
-    val aluguel = gamer.alugaGame(, periodo)
+    val aluguel = gamer.alugaGame(ConsumeApi().findGame("156"), periodo)
 
     println(aluguel.toString())
 
