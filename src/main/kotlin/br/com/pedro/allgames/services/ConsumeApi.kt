@@ -1,9 +1,8 @@
 package br.com.pedro.allgames.services
 
 import br.com.pedro.allgames.extensions.criaGamer
-import br.com.pedro.allgames.model.Gamer
-import br.com.pedro.allgames.model.InfoGame
-import br.com.pedro.allgames.model.InfoGamerJson
+import br.com.pedro.allgames.extensions.criaJogo
+import br.com.pedro.allgames.model.*
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import java.net.URI
@@ -49,6 +48,21 @@ class ConsumeApi {
 
         return response.body()
 
+    }
+
+    fun buscaJogosJson(): List<Jogo> {
+        val endereco = "https://raw.githubusercontent.com/jeniblodev/arquivosJson/main/jogos.json"
+        val json = consumeApi(endereco)
+
+        val gson = Gson()
+        val meuJogoTipo = object : TypeToken<List<InfoJogoJson>>() {}.type
+        val listaJogo: List<InfoJogoJson> = gson.fromJson(json, meuJogoTipo)
+
+        val listaJogoConvertida = listaJogo.map {
+            it.criaJogo()
+        }
+
+        return listaJogoConvertida
     }
 
 }
