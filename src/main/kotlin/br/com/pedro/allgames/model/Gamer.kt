@@ -20,6 +20,7 @@ data class Gamer(
         private set
     val jogosBuscados = mutableListOf<Jogo?>()
     val jogosAlugados = mutableListOf<Aluguel?>()
+    var plano: PlanoAvulso = PlanoAvulso("BRONZE")
 
     constructor(nome: String, email: String, dataNascimento: String, usuario: String) : this(nome, email) {
 
