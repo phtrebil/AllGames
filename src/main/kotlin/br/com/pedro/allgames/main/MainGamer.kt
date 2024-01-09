@@ -1,6 +1,7 @@
 package br.com.pedro.allgames.main
 
 import br.com.pedro.allgames.model.Periodo
+import br.com.pedro.allgames.model.PlanoAssinatura
 import br.com.pedro.allgames.services.ConsumeApi
 import java.time.LocalDate
 
@@ -21,5 +22,14 @@ fun main() {
     gamer.alugaGame(jogoApi[13], periodo3)
 
     println(gamer.jogosAlugados)
+
+    val gamerCamila = listaGamers.get(5)
+    gamerCamila.plano = PlanoAssinatura("PRATA", 9.90, 3)
+
+    gamerCamila.alugaGame(jogoApi[0], periodo1)
+    gamerCamila.alugaGame(jogoApi[2], periodo2)
+    gamerCamila.alugaGame(jogoApi[13], periodo3)
+
+    println(gamerCamila.jogosAlugados)
 
 }
