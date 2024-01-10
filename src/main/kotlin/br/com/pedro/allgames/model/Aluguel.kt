@@ -5,7 +5,7 @@ class Aluguel(
     val jogo: Jogo,
     val periodo: Periodo
 ) {
-    var valorDoAluguel =  gamer.plano.obterPlanoAvulso(this)
+    var valorDoAluguel =  gamer.plano.obterValor(this)
     override fun toString(): String {
         return "Aluguel do jogo ${jogo.titulo} por ${gamer.nome} pelo valor R$$valorDoAluguel"
     }

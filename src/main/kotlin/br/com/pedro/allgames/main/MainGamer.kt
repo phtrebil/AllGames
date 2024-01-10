@@ -21,7 +21,7 @@ fun main() {
     gamer.alugaGame(jogoApi[2], periodo2)
     gamer.alugaGame(jogoApi[13], periodo3)
 
-    println(gamer.jogosAlugados)
+   // println(gamer.jogosAlugados)
 
     val gamerCamila = listaGamers.get(5)
     gamerCamila.plano = PlanoAssinatura("PRATA", 9.90, 3)
@@ -29,6 +29,7 @@ fun main() {
     gamerCamila.alugaGame(jogoApi[0], periodo1)
     gamerCamila.alugaGame(jogoApi[2], periodo2)
     gamerCamila.alugaGame(jogoApi[13], periodo3)
+    gamerCamila.alugaGame(jogoApi[11], periodo3)
 
     println(gamerCamila.jogosAlugados)
 
