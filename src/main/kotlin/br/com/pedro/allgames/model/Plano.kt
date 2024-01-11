@@ -1,6 +1,6 @@
 package br.com.pedro.allgames.model
 
-open class Plano(
+sealed class Plano(
     val tipo: String
 ) {
    open fun obterValor(aluguel: Aluguel): Double{
