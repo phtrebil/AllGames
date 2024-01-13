@@ -7,7 +7,7 @@ import kotlin.random.Random
 data class Gamer(
     var nome: String,
     var email: String
-) {
+): Recomendavel {
     var dataNascimento: String? = null
     var usuario: String? = null
         set(value) {
@@ -47,6 +47,13 @@ data class Gamer(
         val aluguel = Aluguel(this, jogo, periodo)
         jogosAlugados.add(aluguel)
         return aluguel
+    }
+
+    override val media: Double
+        get() = TODO("Not yet implemented")
+
+    override fun recomendar(nota: Int) {
+        TODO("Not yet implemented")
     }
 
     override fun toString(): String {
