@@ -21,6 +21,7 @@ data class Gamer(
     val jogosBuscados = mutableListOf<Jogo?>()
     val jogosAlugados = mutableListOf<Aluguel?>()
     var plano: Plano = PlanoAvulso("BRONZE")
+    private val listaDeNotas = mutableListOf<Int>()
 
     constructor(nome: String, email: String, dataNascimento: String, usuario: String) : this(nome, email) {
 
@@ -50,14 +51,20 @@ data class Gamer(
     }
 
     override val media: Double
-        get() = TODO("Not yet implemented")
+        get() = listaDeNotas.average()
 
     override fun recomendar(nota: Int) {
-        TODO("Not yet implemented")
+        listaDeNotas.add(nota)
     }
 
     override fun toString(): String {
-        return "Gamer(nome='$nome', email='$email', dataNascimento=$dataNascimento, usuario=$usuario, idInterno=$idInterno)"
+        return "Gamer:\n" +
+                "Nome: $nome\n" +
+                "Email: $email\n" +
+                "Data Nascimento: $dataNascimento\n" +
+                "Usuario: $usuario\n" +
+                "IdInterno: $idInterno\n" +
+                "Reputação: $media"
     }
 
     fun validaEmail(): String {
