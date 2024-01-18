@@ -6,6 +6,8 @@ data class Jogo(
 ) {
     var descricao: String? = null
     var preco = 0.0
+    val listaDeNotas = mutableListOf<Int>()
+    val nota = listaDeNotas.average()
     constructor(titulo: String, capa: String, preco: Double, descricao: String):
             this(titulo, capa) {
         this.preco = preco
@@ -17,5 +19,9 @@ data class Jogo(
                 "Capa: $capa \n" +
                 "Descricao: $descricao \n" +
                 "Preço: $preco"
+    }
+
+    fun recomendar(nota: Int) {
+        listaDeNotas.add(nota)
     }
 }

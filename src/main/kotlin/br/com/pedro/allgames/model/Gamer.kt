@@ -22,6 +22,7 @@ data class Gamer(
     val jogosAlugados = mutableListOf<Aluguel?>()
     var plano: Plano = PlanoAvulso("BRONZE")
     private val listaDeNotas = mutableListOf<Int>()
+    val jogosRecomendados = mutableListOf<Jogo>()
 
     constructor(nome: String, email: String, dataNascimento: String, usuario: String) : this(nome, email) {
 
@@ -48,6 +49,11 @@ data class Gamer(
         val aluguel = Aluguel(this, jogo, periodo)
         jogosAlugados.add(aluguel)
         return aluguel
+    }
+
+    fun recomendarJogo(jogo: Jogo, nota: Int){
+        jogo.recomendar(nota)
+        jogosRecomendados.add(jogo)
     }
 
     override val media: Double
