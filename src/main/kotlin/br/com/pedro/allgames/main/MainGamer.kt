@@ -3,6 +3,7 @@ package br.com.pedro.allgames.main
 import br.com.pedro.allgames.model.Periodo
 import br.com.pedro.allgames.model.PlanoAssinatura
 import br.com.pedro.allgames.services.ConsumeApi
+import com.google.gson.GsonBuilder
 import java.time.LocalDate
 
 fun main() {
@@ -39,5 +40,8 @@ fun main() {
     println(gamerCamila.toString())
 
     println(gamerCamila.jogosAlugados)
+
+    val gson = GsonBuilder().excludeFieldsWithoutExposeAnnotation().create()
+    val serializacao = gson.toJson(gamerCamila.jogosRecomendados)
 
 }
