@@ -27,15 +27,25 @@ fun main() {
     val gamerCamila = listaGamers.get(5)
     gamerCamila.plano = PlanoAssinatura("PRATA", 9.90, 3, 0.15)
 
-    gamerCamila.alugaGame(jogoApi[0], periodo1)
-    gamerCamila.alugaGame(jogoApi[2], periodo2)
-    gamerCamila.alugaGame(jogoApi[13], periodo3)
-    gamerCamila.alugaGame(jogoApi[11], periodo3)
+    val gamerCaroline = listaGamers.get(3)
+    val jogoResidentVillage = jogoApi.get(10)
+    val jogoSpider = jogoApi.get(13)
+    val jogoTheLastOfUs = jogoApi.get(2)
+    val jogoDandara = jogoApi.get(5)
+    val jogoAssassins = jogoApi.get(4)
+    val jogoCyber = jogoApi.get(6)
+    val jogoGod = jogoApi.get(7)
+    val jogoSkyrim = jogoApi.get(18)
 
-    gamerCamila.recomendar(10)
-    gamerCamila.recomendar(9)
-    gamerCamila.recomendar(8)
-    gamerCamila.recomendar(0)
+    gamerCamila.recomendarJogo(jogoResidentVillage, 7)
+    gamerCamila.recomendarJogo(jogoTheLastOfUs, 10)
+    gamerCamila.recomendarJogo(jogoAssassins, 8)
+    gamerCamila.recomendarJogo(jogoCyber, 7)
+    gamerCamila.recomendarJogo(jogoGod, 10)
+    gamerCamila.recomendarJogo(jogoDandara, 8)
+    gamerCamila.recomendarJogo(jogoSkyrim, 8)
+    gamerCamila.recomendarJogo(jogoSpider, 6)
+
 
     println(gamerCamila.toString())
 
@@ -44,4 +54,5 @@ fun main() {
     val gson = GsonBuilder().excludeFieldsWithoutExposeAnnotation().create()
     val serializacao = gson.toJson(gamerCamila.jogosRecomendados)
 
+    println(serializacao)
 }
