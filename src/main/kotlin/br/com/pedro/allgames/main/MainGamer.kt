@@ -55,4 +55,7 @@ fun main() {
     val serializacao = gson.toJson(gamerCamila.jogosRecomendados)
 
     println(serializacao)
+
+    val arquivo = File("jogosRecomendados.json")
+
 }
