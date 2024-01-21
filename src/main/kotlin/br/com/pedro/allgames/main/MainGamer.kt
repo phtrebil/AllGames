@@ -4,6 +4,7 @@ import br.com.pedro.allgames.model.Periodo
 import br.com.pedro.allgames.model.PlanoAssinatura
 import br.com.pedro.allgames.services.ConsumeApi
 import com.google.gson.GsonBuilder
+import java.io.File
 import java.time.LocalDate
 
 fun main() {
@@ -57,5 +58,7 @@ fun main() {
     println(serializacao)
 
     val arquivo = File("jogosRecomendados.json")
+    arquivo.writeText(serializacao)
+    println(arquivo.absolutePath)
 
 }
