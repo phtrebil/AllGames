@@ -1,6 +1,8 @@
 package br.com.pedro.allgames.model
 
+import br.com.pedro.allgames.extensions.apenasDuasCasasDecimais
 import com.google.gson.annotations.Expose
+import java.math.RoundingMode
 
 data class Jogo(
     @Expose val titulo:String,
@@ -20,7 +22,8 @@ data class Jogo(
                 "Título: $titulo \n" +
                 "Capa: $capa \n" +
                 "Descricao: $descricao \n" +
-                "Preço: $preco"
+                "Preço: ${preco.apenasDuasCasasDecimais()} \n" +
+                "Nota: ${nota.apenasDuasCasasDecimais()}"
     }
 
     fun recomendar(nota: Int) {

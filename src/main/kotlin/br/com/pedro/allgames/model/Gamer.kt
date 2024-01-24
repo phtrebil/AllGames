@@ -1,6 +1,6 @@
 package br.com.pedro.allgames.model
 
-import java.time.LocalDate
+import br.com.pedro.allgames.extensions.apenasDuasCasasDecimais
 import java.util.*
 import kotlin.random.Random
 
@@ -70,7 +70,7 @@ data class Gamer(
                 "Data Nascimento: $dataNascimento\n" +
                 "Usuario: $usuario\n" +
                 "IdInterno: $idInterno\n" +
-                "Reputação: $media"
+                "Reputação: ${media.apenasDuasCasasDecimais()}"
     }
 
     fun validaEmail(): String {
