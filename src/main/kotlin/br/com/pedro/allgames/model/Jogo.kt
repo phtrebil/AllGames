@@ -2,6 +2,7 @@ package br.com.pedro.allgames.model
 
 import br.com.pedro.allgames.extensions.apenasDuasCasasDecimais
 import com.google.gson.annotations.Expose
+import java.math.BigDecimal
 import java.math.RoundingMode
 
 data class Jogo(
@@ -9,10 +10,10 @@ data class Jogo(
     @Expose val capa:String
 ) {
     var descricao: String? = null
-    var preco = 0.0
+    var preco: BigDecimal = BigDecimal(0.0)
     val listaDeNotas = mutableListOf<Int>()
     val nota = listaDeNotas.average()
-    constructor(titulo: String, capa: String, preco: Double, descricao: String):
+    constructor(titulo: String, capa: String, preco: BigDecimal, descricao: String):
             this(titulo, capa) {
         this.preco = preco
         this.descricao = descricao
@@ -22,7 +23,7 @@ data class Jogo(
                 "Título: $titulo \n" +
                 "Capa: $capa \n" +
                 "Descricao: $descricao \n" +
-                "Preço: ${preco.apenasDuasCasasDecimais()} \n" +
+                "Preço: ${preco} \n" +
                 "Nota: ${nota.apenasDuasCasasDecimais()}"
     }
 

@@ -12,8 +12,8 @@ fun main() {
     val listaGamers = consumo.buscaGamers()
     val jogoApi = consumo.buscaJogosJson()
 
-//    println(listaGamers)
-//    println(jogoApi)
+    println(listaGamers)
+    println(jogoApi)
 
     val gamer = consumo.buscaGamers().get(2)
     val periodo1 = Periodo(LocalDate.now(), LocalDate.now().plusDays(3))
@@ -23,7 +23,7 @@ fun main() {
     gamer.alugaGame(jogoApi[2], periodo2)
     gamer.alugaGame(jogoApi[13], periodo3)
 
-   // println(gamer.jogosAlugados)
+    println(gamer.jogosAlugados)
 
     val gamerCamila = listaGamers.get(5)
     gamerCamila.plano = PlanoAssinatura("PRATA", 9.90, 3, 0.15)
